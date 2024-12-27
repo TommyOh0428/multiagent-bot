@@ -2,3 +2,5 @@ python-dotenv
 openai
 requests
 py-cord
+discord.py
+flask
