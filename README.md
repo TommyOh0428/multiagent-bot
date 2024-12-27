@@ -2,9 +2,11 @@
 
 ## Description
 
+This project is a multi-agent discord bot that simulates a software development team. The bot has four agents: frontend, backend, devops, and scrum master. Each agent has its own set of instructions and can communicate with other agents to complete tasks. Throughout this project, users can interact with the bot to assign tasks to agents, check the status of tasks, and view the instructions for each agent with faster software development.
+
 ## Demo
 
-## How the project structure
+## Project structure
 ```txt
 ├── agents/
 │   ├── __init__.py        # Initialize agents module
@@ -33,13 +35,18 @@
 │
 ├── requirements.txt       # Python dependencies
 ├── serverless.yml         # Serverless framework config (for AWS Lambda)
-├── .env                   # Environment variables (e.g., Discord token)
+├── .env                   # Environment variables (e.g., Discord token) [change .env.example to .env]
 ├── main.py                # Entry point for running locally
 ├── README.md              # Project documentation
 ├── requirements.txt       # Python dependencies
 ├── .gitignore             # Files to ignore in git
 └── LICENSE                # Project license
 ```
+
+## Setup
+
+This project requires virtual environment to manage dependencies.
+This project has built with Python 3.11.
 
 ### How to create virtual environment
 
