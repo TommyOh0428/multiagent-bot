@@ -5,6 +5,7 @@
 ## Demo
 
 ## How the project structure
+```txt
 ├── agents/
 │   ├── __init__.py        # Initialize agents module
 │   ├── frontend_agent.py  # Frontend agent logic
@@ -38,6 +39,7 @@
 ├── requirements.txt       # Python dependencies
 ├── .gitignore             # Files to ignore in git
 └── LICENSE                # Project license
+```
 
 ### How to create virtual environment
 
