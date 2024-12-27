@@ -10,7 +10,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### how to install all packages
+### how to install all dependencies
 
 ```bash
 pip install -r requirements.txt
