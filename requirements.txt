@@ -4,3 +4,6 @@ requests
 py-cord
 discord.py
 flask
+pytest
+routes
+discord-interactions
