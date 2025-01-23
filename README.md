@@ -1,12 +1,31 @@
-# Multiagent discord bot
+<h4 align="center">
+    <br> <img src="public/discord.png">
+</h4>
 
-## Description
+<h4 align="center">
+    Multiagent Discord Bot
+    <!-- <div align="center">
+    <br>
+        <a href=".">
+            <img src="https://github.com/sfuosdev/Website/actions/workflows/node.yml/badge.svg"/>
+        </a>
+    </div> -->
+</h4>
+
+<p align="center">
+    <a href="#description">Description</a> •
+    <a href="#project-structure">Structure</a> •
+    <a href="#how-does-it-work">How does it work</a> •
+    <a href="#license">License</a> •
+    <a href="#setup"> Setup</a>
+</p>
+
+### Description
 
 This project is a multi-agent discord bot that simulates a software development team. The bot has four agents: frontend, backend, devops, and scrum master. Each agent has its own set of instructions and can communicate with other agents to complete tasks. Throughout this project, users can interact with the bot to assign tasks to agents, check the status of tasks, and view the instructions for each agent with faster software development.
 
-## Demo
+### Project structure
 
-## Project structure
 ```txt
 ├── agents/
 │   ├── __init__.py        # Initialize agents module
@@ -43,12 +62,28 @@ This project is a multi-agent discord bot that simulates a software development 
 └── LICENSE                # Project license
 ```
 
-## Setup
+### How does it work?
+
+<h4 align="center">
+    <br> <img src="public/structure.png">
+</h4>
+
+[need to work on more]
+
+prototype
+
+AI Routing
+
+### License
+
+This project is under MIT Licnese. You are welcome to contribute to this project.
+
+### Setup
 
 This project requires virtual environment to manage dependencies.
 This project has built with Python 3.11.
 
-### How to create virtual environment
+#### How to create virtual environment
 
 ```bash
 # create virtual environment
@@ -61,7 +96,7 @@ source venv/bin/activate
 . venv/bin/activate.fish
 ```
 
-### How to install all dependencies
+#### How to install all dependencies
 
 ```bash
 pip install -r requirements.txt
