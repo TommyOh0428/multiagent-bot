@@ -1,0 +1,3 @@
+[submodule "multiagent-docs"]
+	path = multiagent-docs
+	url = https://github.com/TommyOh0428/multiagent-docs.git
