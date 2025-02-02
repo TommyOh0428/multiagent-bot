@@ -9,3 +9,6 @@ venv/
 .env
 
 .DS_Store
+
+# ignoring the testing log
+performance.log
