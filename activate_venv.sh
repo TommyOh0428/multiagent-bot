@@ -12,11 +12,12 @@ echo "Running on OS: $OSTYPE"
 # if macos, use this command
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source ./.venv/bin/activate
-
+fi
 # if windows, use the following command
-elif [[ "$OSTYPE" == "msys" ]]; then
+if [[ "$OSTYPE" == "msys" ]]; then
     .\venv\Scripts\activate
-
+fi
 # if linux, use the following command
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
     source ./.venv/bin/activate
+fi
