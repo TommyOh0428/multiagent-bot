@@ -89,15 +89,9 @@ This project has built with Python 3.11.
 # create virtual environment
 python3 -m venv venv
 
-# activate virtual environment
-source venv/bin/activate
+# activate virtual environment using shell script
+source activate_venv.sh
 
-# fish shell
-. venv/bin/activate.fish
-```
-
-#### How to install all dependencies
-
-```bash
+# install all dependencies
 pip install -r requirements.txt
 ```
