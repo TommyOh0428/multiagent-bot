@@ -16,7 +16,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 # if windows, use the following command
 if [[ "$OSTYPE" == "msys" ]]; then
-    .\venv\Scripts\activate
+    source ./.venv/Scripts/activate
     echo "Activated virtual environment"
 fi
 # if linux, use the following command
