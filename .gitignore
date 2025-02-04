@@ -2,6 +2,9 @@
 __pycache__/
 .pytest_cache/
 
+# node_modules
+node_modules/
+
 # virtual environment
 venv/
 .venv/
