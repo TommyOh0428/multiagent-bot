@@ -13,3 +13,7 @@ venv/
 
 # ignoring the testing log
 performance.log
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
