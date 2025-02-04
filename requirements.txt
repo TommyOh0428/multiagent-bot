@@ -5,4 +5,4 @@ pytest
 routes
 discord-interactions
 pylint
-pyyamlPyYAML==6.0.1
+pyyaml
