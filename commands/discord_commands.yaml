@@ -8,3 +8,6 @@
       description: The message to echo back.
       type: 3 # string
       required: true
+
+- name: help
+  description: Show actions that bot can do.
