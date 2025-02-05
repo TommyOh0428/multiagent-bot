@@ -1,6 +1,9 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
+import dotenv from "dotenv";
+
+const discord_public_key = process.env.PUBLIC_KEY;
 
 export class DiscordBotLambdaStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -15,7 +18,7 @@ export class DiscordBotLambdaStack extends cdk.Stack {
         timeout: cdk.Duration.seconds(10),
         architecture: lambda.Architecture.ARM_64,
         environment: {
-          DISCORD_PUBLIC_KEY: "INSERT_YOUR_DISCORD_PUBLIC_KEY_HERE",
+          DISCORD_PUBLIC_KEY: discord_public_key || "",
         },
       }
     );

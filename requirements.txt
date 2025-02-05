@@ -6,3 +6,4 @@ routes
 discord-interactions
 pylint
 pyyaml
+requests
