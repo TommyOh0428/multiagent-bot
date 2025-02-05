@@ -43,3 +43,11 @@
       description: The message to send to devops agent.
       type: 3 # string
       required: true
+
+- name: database
+  description: Talk to database agent.
+  options:
+    - name: message
+      description: The message to send to database agent.
+      type: 3 # string
+      required: true

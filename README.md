@@ -22,7 +22,7 @@
 
 ### Description
 
-This project is a multi-agent discord bot that simulates a software development team. The bot has four agents: frontend, backend, devops, and scrum master. Each agent has its own set of instructions and can communicate with other agents to complete tasks. Throughout this project, users can interact with the bot to assign tasks to agents, check the status of tasks, and view the instructions for each agent with faster software development.
+This project is a multi-agent discord bot that simulates a software development team. The bot has five agents: frontend, backend, devops, database, and scrum master. Each agent has its own set of instructions and can communicate with other agents to complete tasks. Throughout this project, users can interact with the bot to assign tasks to agents, check the status of tasks, and view the instructions for each agent with faster software development.
 
 ### Project structure
 
@@ -32,12 +32,14 @@ This project is a multi-agent discord bot that simulates a software development 
 │   ├── frontend_agent.py  # Frontend agent logic
 │   ├── backend_agent.py   # Backend agent logic
 │   ├── devops_agent.py    # DevOps agent logic
+|   ├── database_agent.py  # Database agent logic
 │   ├── scrum_master_agent.py # Scrum master logic
 │
 ├── instructions/
 │   ├── frontend.txt
 │   ├── backend.txt
 │   ├── devops.txt
+|   ├── database.txt
 │   ├── scrum-master.txt
 │
 ├── app/
