@@ -1,10 +1,9 @@
 python-dotenv
-openai
 requests
-py-cord
-discord.py
 flask
 pytest
 routes
 discord-interactions
 pylint
+pyyaml
+requests

@@ -1,0 +1,45 @@
+- name: hello
+  description: Say hello!
+
+- name: echo
+  description: Echo message back to sender.
+  options:
+    - name: message
+      description: The message to echo back.
+      type: 3 # string
+      required: true
+
+- name: help
+  description: Show actions that bot can do.
+
+- name: scrum
+  description: Talk to scrum agent.
+  options:
+    - name: message
+      description: The message to send to scrum agent.
+      type: 3 # string
+      required: true
+
+- name: frontend
+  description: Talk to frontend agent.
+  options:
+    - name: message
+      description: The message to send to frontend agent.
+      type: 3 # string
+      required: true
+
+- name: backend
+  description: Talk to backend agent.
+  options:
+    - name: message
+      description: The message to send to backend agent.
+      type: 3 # string
+      required: true
+
+- name: devops
+  description: Talk to devops agent.
+  options:
+    - name: message
+      description: The message to send to devops agent.
+      type: 3 # string
+      required: true

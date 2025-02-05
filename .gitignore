@@ -2,6 +2,9 @@
 __pycache__/
 .pytest_cache/
 
+# node_modules
+node_modules/
+
 # virtual environment
 venv/
 .venv/
@@ -13,3 +16,7 @@ venv/
 
 # ignoring the testing log
 performance.log
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
