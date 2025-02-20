@@ -1,4 +1,3 @@
-# test_frontend_commands.py
 from agents.frontend_agent import FrontendAgent
 
 def test_frontend_process_command(tmp_path):
