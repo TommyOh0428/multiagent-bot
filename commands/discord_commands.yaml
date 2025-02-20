@@ -32,6 +32,9 @@
         - name: frontend
           value: frontend
 
+        - name : DevOp
+          value: DevOp
+
 # Basic Commands ------------------------------------------------------- 
 - name: hello
   description: Say hello!
