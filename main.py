@@ -26,6 +26,8 @@ def interact(raw_request):
         data = raw_request["data"]
         command_name = data["name"]
 
+        message_content = "Unknown command"
+
         if command_name == "hello":
             message_content = "Hello there!"
         elif command_name == "echo":
