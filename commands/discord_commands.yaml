@@ -25,7 +25,7 @@
       choices:
         - name: scrum
           value: scrum
-        
+
         - name: backend
           value: backend
         
@@ -52,6 +52,14 @@
       description: The message to send to frontend agent.
       type: 3 # string
       required: true
+    - name: priority
+      description: Priority of the task (low, medium, high)
+      type: 3
+      required: false
+    - name: deadline
+      description: Deadline for the task (YYYY-MM-DD)
+      type: 3
+      required: false
 
 - name: backend
   description: Talk to backend agent.
@@ -60,6 +68,14 @@
       description: The message to send to backend agent.
       type: 3 # string
       required: true
+    - name: priority
+      description: Priority of the task (low, medium, high)
+      type: 3
+      required: false
+    - name: deadline
+      description: Deadline for the task (YYYY-MM-DD)
+      type: 3
+      required: false
 
 - name: devops
   description: Talk to devops agent.
@@ -68,6 +84,14 @@
       description: The message to send to devops agent.
       type: 3 # string
       required: true
+    - name: priority
+      description: Priority of the task (low, medium, high)
+      type: 3
+      required: false
+    - name: deadline
+      description: Deadline for the task (YYYY-MM-DD)
+      type: 3
+      required: false
 
 # Add more
 
