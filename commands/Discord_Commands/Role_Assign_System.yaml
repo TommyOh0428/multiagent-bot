@@ -1,0 +1,26 @@
+# Role Assignment -----------------------------------------------------
+
+- name: assign-role
+  description: Assign a role to a discord member.
+  options:
+    - name: member
+      description: The Discord member's ID or mention.
+      type: 3 # string
+      required: true
+
+    - name: role
+      description: The role to assign to the member.
+      type: 3 # string
+      required: true
+    
+    - name: agent
+      description: Choose an agent type.
+      type: 3 # string
+      required: false
+      choices:
+        - name: scrum
+          value: scrum
+
+        - name : DevOp
+          value: DevOp
+# ---------------------------------------------------------------------
