@@ -60,6 +60,10 @@
       description: Deadline for the task (YYYY-MM-DD)
       type: 3
       required: false
+    - name: private
+      description: Show the response personally.
+      type: 5 
+      required: false
 
 - name: backend
   description: Talk to backend agent.
@@ -76,6 +80,10 @@
       description: Deadline for the task (YYYY-MM-DD)
       type: 3
       required: false
+    - name: private
+      description: Show the response personally.
+      type: 5 
+      required: false
 
 - name: devops
   description: Talk to devops agent.
@@ -91,6 +99,10 @@
     - name: deadline
       description: Deadline for the task (YYYY-MM-DD)
       type: 3
+      required: false
+    - name: private
+      description: Show the response personally.
+      type: 5 
       required: false
 
 # Add more
