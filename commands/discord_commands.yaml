@@ -1,3 +1,38 @@
+# Help ----------------------------------------------------------------
+
+- name: help
+  description: Show actions that bot can do.
+
+# Role Assignment -----------------------------------------------------
+
+- name: assign-role
+  description: Assign a role to a discord member.
+  options:
+    - name: member
+      description: The Discord member's ID or mention.
+      type: 3 # string
+      required: true
+
+    - name: role
+      description: The role to assign to the member.
+      type: 3 # string
+      required: true
+    
+    - name: agent
+      description: Choose an agent type.
+      type: 3 # string
+      required: false
+      choices:
+        - name: scrum
+          value: scrum
+        
+        - name: backend
+          value: backend
+        
+        - name: frontend
+          value: frontend
+
+# Basic Commands ------------------------------------------------------- 
 - name: hello
   description: Say hello!
 
@@ -9,8 +44,7 @@
       type: 3 # string
       required: true
 
-- name: help
-  description: Show actions that bot can do.
+# Calling of roles (Message) ----------------------------------------------------
 
 - name: scrum
   description: Talk to scrum agent.
@@ -43,3 +77,7 @@
       description: The message to send to devops agent.
       type: 3 # string
       required: true
+
+# Add more
+
+# ----------------------------------------------------------------------------
