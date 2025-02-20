@@ -6,4 +6,5 @@ routes
 discord-interactions
 pylint
 pyyaml
-requests
+asgiref
+mangum
