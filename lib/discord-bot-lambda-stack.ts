@@ -1,7 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import dotenv from "dotenv";
 
 const discord_public_key = process.env.PUBLIC_KEY;
 
@@ -13,7 +12,8 @@ export class DiscordBotLambdaStack extends cdk.Stack {
       this,
       "DockerFunction",
       {
-        code: lambda.DockerImageCode.fromImageAsset("./src"),
+        // tell the aws cdk that the docker image is at the root directory
+        code: lambda.DockerImageCode.fromImageAsset("./"),
         memorySize: 1024,
         timeout: cdk.Duration.seconds(10),
         architecture: lambda.Architecture.ARM_64,
