@@ -1,4 +1,4 @@
-from agents.frontend_agent import FrontendAgent
+from app.agents.frontend_agent import FrontendAgent
 
 def test_frontend_process_command(tmp_path):
     instructions_file = tmp_path / "instructions.txt"
