@@ -1,4 +1,5 @@
 import argparse
+import time
 import requests
 import yaml
 import os
@@ -29,6 +30,7 @@ def register_commands(commands):
     for command in commands:
         response = requests.post(URL, json=command, headers=headers)
         command_name = command.get("name", "Unknown")
+        time.sleep(2)
 
         if response.status_code in [200, 201]:
             print(f"Command '{command_name}' created: {response.status_code}")
@@ -38,16 +40,23 @@ def register_commands(commands):
             print(f"Failed to create command '{command_name}': {response.status_code}, {response.text}")
 
 def main():
-    parsar = argparse.ArgumentParser(description="Register Discord commands.")
-    parsar.add_argument("file", help="Path to the YAML file containing the commands.")
-    args = parsar.parse_args()
-    commands = load_yaml(args.file)
+    parser = argparse.ArgumentParser(description="Register Discord commands.")
+    # Allow multiple YAML file paths
+    parser.add_argument("files", nargs="+", help="One or more YAML files containing commands.")
+    args = parser.parse_args()
 
-    if not commands:
+    all_commands = []
+    for file_path in args.files:
+        commands_in_file = load_yaml(file_path)
+        if commands_in_file:
+            # Merge commands from this file into our master list
+            all_commands.extend(commands_in_file)
+
+    if not all_commands:
         print("No commands found.")
         exit(1)
     
-    register_commands(commands)
+    register_commands(all_commands)
 
 if __name__ == "__main__":
     main()
