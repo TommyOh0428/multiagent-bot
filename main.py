@@ -20,6 +20,7 @@ async def interactions():
 
 @verify_key_decorator(DISCORD_PUBLIC_KEY)
 def interact(raw_request):
+    message_content = ""
     if raw_request["type"] == 1:  # PING
         response_data = {"type": 1}  # PONG
     else:
