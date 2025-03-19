@@ -63,7 +63,6 @@ def interactions():
     # Process other interactions (e.g., slash commands) here.
     return jsonify({"type": 4, "data": {"content": "Interaction received!"}})
 
-# Create an ASGI app from the Flask app for Lambda compatibility.
 asgi_app = WsgiToAsgi(app)
 handler = Mangum(asgi_app)
 

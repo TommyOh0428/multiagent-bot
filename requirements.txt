@@ -3,9 +3,11 @@ requests
 flask
 pytest
 routes
-discord-interactions
 pylint
 pyyaml
 requests
 mangum
 asgiref
+pynacl
+openai-agents
+discord
