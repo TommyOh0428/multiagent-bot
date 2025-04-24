@@ -19,11 +19,5 @@ async def on_message(message):
         return
 
     if message.content.startswith("/scrum"):
-        chat_history = []
-        async for msg in message.channel.history(limit=10):
-            chat_history.append(f"{msg.author.name}: {msg.content}")
-
-        chat_history.reverse()
-        input_text = "\n".join(chat_history)
-        response = ScrumMasterAgent.get_scrum_response(input_text)
+        response = ScrumMasterAgent.get_scrum_response(message.content)
         await message.channel.send(response)
