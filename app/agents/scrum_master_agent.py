@@ -1,6 +1,4 @@
 import os
-import discord
-from discord.ext import commands
 import openai
 from dotenv import load_dotenv
 from app.helper import load_instructions, get_chat_history, create_prompt
