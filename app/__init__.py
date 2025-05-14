@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-from agents.scrum_master_agent import ScrumMasterAgent
+from .agents.scrum_master_agent import ScrumMasterAgent
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,7 +9,7 @@ load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
 intents = discord.Intents.default()
-intents.messages = True
+intents.message_content = True
 
 bot = commands.Bot(command_prefix = "/", intents = intents)
 
@@ -19,5 +19,5 @@ async def on_message(message):
         return
 
     if message.content.startswith("/scrum"):
-        response = ScrumMasterAgent.get_scrum_response(message.content)
+        response = await ScrumMasterAgent.get_scrum_response(message.channel, message.content)
         await message.channel.send(response)
