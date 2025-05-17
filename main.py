@@ -79,6 +79,7 @@ def interactions():
                 # For example, if your option is named 'prompt':
                 # user_input = next((opt['value'] for opt in options if opt['name'] == 'prompt'), "")
                 user_input = options[0].get("value", "") 
+                print(f"User input for scrum command: {user_input}")
 
             if not user_input:
                 return jsonify({
