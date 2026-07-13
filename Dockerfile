@@ -1,11 +1,31 @@
-FROM public.ecr.aws/lambda/python:3.13
+FROM cgr.dev/chainguard/python:latest-dev AS builder
 
-COPY requirements.txt ${LAMBDA_TASK_ROOT}
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-COPY . ${LAMBDA_TASK_ROOT}
+WORKDIR /app
 
-COPY .env ${LAMBDA_TASK_ROOT}
+RUN python -m venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
 
-RUN pip install -r requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["main.handler"]
+
+FROM cgr.dev/chainguard/python:latest
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/app/venv/bin:$PATH" \
+    PORT=8080
+
+WORKDIR /app
+
+COPY --from=builder /app/venv /app/venv
+COPY agents ./agents
+COPY main.py .
+
+EXPOSE 8080
+
+ENTRYPOINT ["/app/venv/bin/python", "-m", "uvicorn"]
+CMD ["main:app", "--host", "0.0.0.0", "--port", "8080"]

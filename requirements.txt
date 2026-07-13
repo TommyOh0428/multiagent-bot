@@ -1,13 +1,9 @@
 python-dotenv
 requests
-flask
+fastapi
+uvicorn[standard]
 pytest
-routes
 pylint
 pyyaml
-requests
-mangum
-asgiref
 pynacl
 openai-agents
-discord
