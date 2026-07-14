@@ -1,10 +1,9 @@
 .pytest_cache/
 __pycache__/
 .venv/
+.env
 node_modules/
 .DS_Store
-.env.example
-
 **/*~
 **/*.log
 */.DS_Store

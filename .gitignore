@@ -2,8 +2,9 @@
 __pycache__/
 .pytest_cache/
 
-# node_modules
+# Locally generated legacy artifacts
 node_modules/
+cdk.out/
 
 # virtual environment
 venv/
@@ -17,7 +18,4 @@ venv/
 # ignoring the testing log
 performance.log
 
-# CDK asset staging directory
-.cdk.staging
-cdk.out
 .qodo

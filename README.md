@@ -33,29 +33,21 @@ This project is a multi-agent discord bot that simulates a software development 
 │   ├── backend_agent.py   # Backend agent logic
 │   ├── devops_agent.py    # DevOps agent logic
 │   ├── scrum_master_agent.py # Scrum master logic
-│
-├── instructions/
-│   ├── frontend.txt
-│   ├── backend.txt
-│   ├── devops.txt
-│   ├── scrum-master.txt
-│
-├── app/
-│   ├── __init__.py        # Initialize Flask app
-│   ├── routes.py          # Flask routes for inter-agent communication
-│
-├── bot/
-│   ├── __init__.py        # Initialize Discord bot
-│   ├── commands.py        # Define Discord bot commands
+│   ├── helper.py          # Shared agent helpers
+│   └── instructions/
+│       ├── frontend.md
+│       ├── backend.md
+│       ├── devops.md
+│       └── scrum-master.md
 │
 ├── tests/
 │   ├── test_agents.py     # Unit tests for agent logic
 │   ├── test_integration.py # Integration tests
 │
-├── requirements.txt       # Python dependencies
-├── serverless.yml         # Serverless framework config (for AWS Lambda)
 ├── .env                   # Environment variables (e.g., Discord token) [change .env.example to .env]
-├── main.py                # Entry point for running locally
+├── main.py                # FastAPI Discord webhook
+├── Dockerfile             # Cloud Run container
+├── deploy.sh              # Cloud Run deployment
 ├── README.md              # Project documentation
 ├── requirements.txt       # Python dependencies
 ├── .gitignore             # Files to ignore in git
@@ -95,3 +87,25 @@ source activate_venv.sh
 # install all dependencies
 pip install -r requirements.txt
 ```
+
+#### Run locally
+
+```bash
+uvicorn main:app --reload --port 8080
+```
+
+Configure Discord's interactions endpoint to the public URL that forwards to
+`POST /`. A health check is available at `GET /health`.
+
+#### Deploy to Cloud Run
+
+Authenticate with `gcloud`, then run:
+
+```bash
+export GCP_PROJECT_ID="your-project-id"
+export GCP_REGION="us-central1" # optional
+./deploy.sh
+```
+
+Set `DISCORD_PUBLIC_KEY` and `OPENAI_API_KEY` on Cloud Run using Secret Manager
+or Cloud Run secret environment variables. Do not put `.env` in the image.
