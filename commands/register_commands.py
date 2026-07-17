@@ -12,6 +12,7 @@ TOKEN = os.getenv("TOKEN")
 APPLICATION_ID = os.getenv("APPLICATION_ID")
 URL = f"https://discord.com/api/v9/applications/{APPLICATION_ID}/commands"
 
+
 def load_yaml(file_path):
     try:
         with open(file_path, "r") as file:
@@ -22,7 +23,8 @@ def load_yaml(file_path):
     except yaml.YAMLError as e:
         print(f"Error parsing YAML: {e}")
         exit(1)
-    
+
+
 def register_commands(commands):
     """Register commands to Discord API."""
     headers = {"Authorization": f"Bot {TOKEN}", "Content-Type": "application/json"}
@@ -37,12 +39,17 @@ def register_commands(commands):
         elif response.status_code == 429:
             print(f"Command '{command_name}' ratelimited: {response.status_code}")
         else:
-            print(f"Failed to create command '{command_name}': {response.status_code}, {response.text}")
+            print(
+                f"Failed to create command '{command_name}': {response.status_code}, {response.text}"
+            )
+
 
 def main():
     parser = argparse.ArgumentParser(description="Register Discord commands.")
     # Allow multiple YAML file paths
-    parser.add_argument("files", nargs="+", help="One or more YAML files containing commands.")
+    parser.add_argument(
+        "files", nargs="+", help="One or more YAML files containing commands."
+    )
     args = parser.parse_args()
 
     all_commands = []
@@ -55,8 +62,9 @@ def main():
     if not all_commands:
         print("No commands found.")
         exit(1)
-    
+
     register_commands(all_commands)
+
 
 if __name__ == "__main__":
     main()

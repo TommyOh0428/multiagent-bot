@@ -15,11 +15,15 @@ load_dotenv()
 app = FastAPI(title="Multiagent Discord Bot")
 
 
-def verify_discord_signature(signature: str | None, timestamp: str | None, body: bytes) -> None:
+def verify_discord_signature(
+    signature: str | None, timestamp: str | None, body: bytes
+) -> None:
     """Verify that an HTTP interaction was signed by Discord."""
     public_key = os.getenv("DISCORD_PUBLIC_KEY") or os.getenv("PUBLIC_KEY")
     if not public_key:
-        raise HTTPException(status_code=500, detail="Discord public key is not configured")
+        raise HTTPException(
+            status_code=500, detail="Discord public key is not configured"
+        )
     if not signature or not timestamp:
         raise HTTPException(status_code=401, detail="Missing Discord signature headers")
 
@@ -27,7 +31,9 @@ def verify_discord_signature(signature: str | None, timestamp: str | None, body:
         verify_key = VerifyKey(bytes.fromhex(public_key))
         verify_key.verify(timestamp.encode() + body, bytes.fromhex(signature))
     except (ValueError, BadSignatureError) as exc:
-        raise HTTPException(status_code=401, detail="Invalid Discord signature") from exc
+        raise HTTPException(
+            status_code=401, detail="Invalid Discord signature"
+        ) from exc
 
 
 @app.get("/health")
@@ -61,7 +67,9 @@ async def interactions(request: Request) -> dict:
             if not user_input:
                 return {
                     "type": 4,
-                    "data": {"content": "You need to provide some input for the scrum master!"},
+                    "data": {
+                        "content": "You need to provide some input for the scrum master!"
+                    },
                 }
 
             try:

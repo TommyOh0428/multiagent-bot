@@ -12,7 +12,7 @@
       description: The role to assign to the member.
       type: 3 # string
       required: true
-    
+
     - name: agent
       description: Choose an agent type.
       type: 3 # string

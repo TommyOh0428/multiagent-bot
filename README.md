@@ -27,15 +27,26 @@ while keeping orchestration, persistence, and infrastructure concerns separate.
 ### Orchestrator Agent
 
 The Orchestrator is the primary user-facing agent. It delegates work to Frontend,
-Backend, DevOps, Scrum, and Security specialists and combines their results into a
-coherent response.
+Backend, DevOps, and Scrum specialists and combines their results into a coherent
+response.
+
+### Security Agent
 
 Code produced by a specialist is reviewed by the Security Agent before it can be
-reported as compliant. A failed review returns structured findings to the
-originating specialist for remediation. Reviews use a bounded retry workflow;
-unresolved findings are escalated to the user after the configured attempt limit.
-The Security Agent provides recommendations only and does not modify code or
-approve deployments.
+reported as compliant. The Security Agent is an independently deployed service
+that communicates with the Orchestrator through the A2A protocol. A failed review
+returns structured findings to the originating specialist for remediation.
+Reviews use a bounded retry workflow; unresolved findings are escalated to the
+user after the configured attempt limit. The Security Agent provides
+recommendations only and does not modify code or approve deployments.
+
+### Cost Optimizer Agent
+
+The Cost Optimizer Agent is independently deployed with read-only access to
+approved billing exports, usage metrics, and resource metadata. It communicates
+with the Orchestrator through A2A and returns evidence-based savings estimates,
+tradeoffs, and recommendations. It cannot resize, stop, delete, or deploy cloud
+resources.
 
 ### Debug Agent
 
@@ -62,7 +73,9 @@ Status: Work in progress
 
 - FastAPI service deployed to Google Cloud Run
 - Multi-agent orchestration with Google Agent Development Kit and Gemini
-- Specialist agents for frontend, backend, DevOps, Scrum, and security review
+- Specialist agents for frontend, backend, DevOps, and Scrum
+- Separate Security Agent for A2A-based security review
+- Separate Cost Optimizer Agent for read-only cost analysis over A2A
 - Separate Debug Agent for read-only operational analysis
 - A2A support for independently deployed agent communication
 - Cloud Firestore for project, task, workflow, and review state

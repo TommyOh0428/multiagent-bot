@@ -17,7 +17,7 @@
       description: The role to assign to the member.
       type: 3 # string
       required: true
-    
+
     - name: agent
       description: Choose an agent type.
       type: 3 # string
@@ -26,11 +26,10 @@
 
         - name: backend
           value: backend
-        
+
         - name: frontend
           value: frontend
 
         - name: database-engineer
           value: database-engineer
 # ---------------------------------------------------------------------
-

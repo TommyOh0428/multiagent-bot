@@ -19,3 +19,4 @@ venv/
 performance.log
 
 .qodo
+.vscode
