@@ -1,111 +1,99 @@
-<h4 align="center">
-    <br> <img src="public/discord.png">
-</h4>
-
-<h4 align="center">
-    Multiagent Discord Bot
-    <!-- <div align="center">
-    <br>
-        <a href=".">
-            <img src="https://github.com/sfuosdev/Website/actions/workflows/node.yml/badge.svg"/>
-        </a>
-    </div> -->
-</h4>
-
 <p align="center">
-    <a href="#description">Description</a> •
-    <a href="#project-structure">Structure</a> •
-    <a href="#how-does-it-work">How does it work</a> •
-    <a href="#license">License</a> •
-    <a href="#setup"> Setup</a>
+  <img src="public/discord.png" alt="Multiagent Developer Bot" />
 </p>
 
-### Description
+<h1 align="center">Multiagent Developer Bot</h1>
 
-This project is a multi-agent discord bot that simulates a software development team. The bot has four agents: frontend, backend, devops, and scrum master. Each agent has its own set of instructions and can communicate with other agents to complete tasks. Throughout this project, users can interact with the bot to assign tasks to agents, check the status of tasks, and view the instructions for each agent with faster software development.
+<p align="center">
+  An AI-assisted software development team built with Google ADK and Google Cloud.
+</p>
 
-### Project structure
+<p align="center">
+  <a href="#overview">Overview</a> •
+  <a href="#agents">Agents</a> •
+  <a href="#roadmap">Roadmap</a> •
+  <a href="#documentation">Documentation</a>
+</p>
 
-```txt
-├── agents/
-│   ├── __init__.py        # Initialize agents module
-│   ├── frontend_agent.py  # Frontend agent logic
-│   ├── backend_agent.py   # Backend agent logic
-│   ├── devops_agent.py    # DevOps agent logic
-│   ├── scrum_master_agent.py # Scrum master logic
-│   ├── helper.py          # Shared agent helpers
-│   └── instructions/
-│       ├── frontend.md
-│       ├── backend.md
-│       ├── devops.md
-│       └── scrum-master.md
-│
-├── tests/
-│   ├── test_agents.py     # Unit tests for agent logic
-│   ├── test_integration.py # Integration tests
-│
-├── .env                   # Environment variables (e.g., Discord token) [change .env.example to .env]
-├── main.py                # FastAPI Discord webhook
-├── Dockerfile             # Cloud Run container
-├── deploy.sh              # Cloud Run deployment
-├── README.md              # Project documentation
-├── requirements.txt       # Python dependencies
-├── .gitignore             # Files to ignore in git
-└── LICENSE                # Project license
-```
+## Overview
 
-### How does it work?
+Multiagent Developer Bot coordinates specialized AI agents to assist with software
+planning, implementation guidance, security review, and operational debugging.
+The system exposes a consistent agent workflow across supported user platforms
+while keeping orchestration, persistence, and infrastructure concerns separate.
 
-<h4 align="center">
-    <br> <img src="public/structure.png">
-</h4>
+## Agents
 
-[need to work on more]
+### Orchestrator Agent
 
-prototype
+The Orchestrator is the primary user-facing agent. It delegates work to Frontend,
+Backend, DevOps, and Scrum specialists and combines their results into a coherent
+response.
 
-AI Routing
+### Security Agent
 
-### License
+Code produced by a specialist is reviewed by the Security Agent before it can be
+reported as compliant. The Security Agent is an independently deployed service
+that communicates with the Orchestrator through the A2A protocol. A failed review
+returns structured findings to the originating specialist for remediation.
+Reviews use a bounded retry workflow; unresolved findings are escalated to the
+user after the configured attempt limit. The Security Agent provides
+recommendations only and does not modify code or approve deployments.
 
-This project is under MIT Licnese. You are welcome to contribute to this project.
+### Cost Optimizer Agent
 
-### Setup
+The Cost Optimizer Agent is independently deployed with read-only access to
+approved billing exports, usage metrics, and resource metadata. It communicates
+with the Orchestrator through A2A and returns evidence-based savings estimates,
+tradeoffs, and recommendations. It cannot resize, stop, delete, or deploy cloud
+resources.
 
-This project requires virtual environment to manage dependencies.
-This project has built with Python 3.11.
+### Debug Agent
 
-#### How to create virtual environment
+The Debug Agent is an independently deployed operational agent. It has read-only,
+least-privilege access to approved logs and produces evidence-based root-cause
+analysis with possible remediation steps. It remains isolated from the
+Orchestrator because it serves a different workflow and security boundary.
 
-```bash
-# create virtual environment
-python3 -m venv venv
+## Roadmap
 
-# activate virtual environment using shell script
-source activate_venv.sh
+### v1.0 — Discord Prototype
 
-# install all dependencies
-pip install -r requirements.txt
-```
+Status: Completed
 
-#### Run locally
+- Initial multi-agent developer bot available through Discord
+- Flask webhook deployed as a containerized AWS Lambda service
+- Infrastructure managed with AWS Cloud Development Kit
+- Direct OpenAI API integration for agent responses
+- Established the initial Frontend, Backend, DevOps, and Scrum agent roles
 
-```bash
-uvicorn main:app --reload --port 8080
-```
+### v2.0 — Google Cloud and ADK
 
-Configure Discord's interactions endpoint to the public URL that forwards to
-`POST /`. A health check is available at `GET /health`.
+Status: Work in progress
 
-#### Deploy to Cloud Run
+- FastAPI service deployed to Google Cloud Run
+- Multi-agent orchestration with Google Agent Development Kit and Gemini
+- Specialist agents for frontend, backend, DevOps, and Scrum
+- Separate Security Agent for A2A-based security review
+- Separate Cost Optimizer Agent for read-only cost analysis over A2A
+- Separate Debug Agent for read-only operational analysis
+- A2A support for independently deployed agent communication
+- Cloud Firestore for project, task, workflow, and review state
+- Secret Manager, Artifact Registry, Cloud Build, and Cloud Logging
+- Discord support, with website and Slack adapters planned
 
-Authenticate with `gcloud`, then run:
+### v3.0 — Kubernetes and Distributed Agents
 
-```bash
-export GCP_PROJECT_ID="your-project-id"
-export GCP_REGION="us-central1" # optional
-./deploy.sh
-```
+Status: Planned
 
-Set `DISCORD_PUBLIC_KEY` and `OPENAI_API_KEY` on Cloud Run using Secret Manager
-or Cloud Run secret environment variables. Do not put `.env` in the image.
+- Add Google Kubernetes Engine as a supported deployment target while preserving
+  Cloud Run compatibility
+- Run independently scalable agents and services with A2A communication
+- Introduce Workload Identity, health probes, resource policies, autoscaling,
+  network policies, and distributed observability
+- Retain the v2 agent contracts and data model across deployment environments
+
+## Documentation
+
+Architecture, setup, and version-specific implementation notes are maintained in
+the [project documentation](https://tommyoh0428.github.io/multiagent-docs/).

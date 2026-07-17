@@ -1,7 +1,4 @@
-import argparse
-import time
 import requests
-import yaml
 import os
 from dotenv import load_dotenv
 
@@ -12,10 +9,8 @@ TOKEN = os.getenv("TOKEN")
 APPLICATION_ID = os.getenv("APPLICATION_ID")
 URL = f"https://discord.com/api/v9/applications/{APPLICATION_ID}/commands"
 
-headers = {
-    "Authorization": f"Bot {TOKEN}",
-    "Content-Type": "application/json"
-}
+headers = {"Authorization": f"Bot {TOKEN}", "Content-Type": "application/json"}
+
 
 def delete_all_commands():
     # Fetch all the current global commands that has been created
@@ -35,7 +30,10 @@ def delete_all_commands():
         if delete_response.status_code == 204:
             print(f"Deleted command '{cmd['name']}'")
         else:
-            print(f"Failed to delete command '{cmd['name']}': {delete_response.status_code} {delete_response.text}")
+            print(
+                f"Failed to delete command '{cmd['name']}': {delete_response.status_code} {delete_response.text}"
+            )
+
 
 if __name__ == "__main__":
     delete_all_commands()
